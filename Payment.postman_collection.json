@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "20e75652-aa36-4209-940a-2305a39b1cd2",
+		"name": "Payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5643912"
+	},
+	"item": [
+		{
+			"name": "Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0029nhbaw23kn1j2njn31121.21knjnn2bbb1111",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"invoice_id\" :\"inv-20240327004\",\r\n    \"item_name\":\"majalan-detik\",\r\n    \"amount\" : 50000,\r\n    \"payment_type\" : \"virtual_account\",\r\n    \"customer_name\" : \"Anonym\",\r\n    \"merchant_id\" : \"shope-002\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://payment-detik.test:8081/payment",
+					"protocol": "http",
+					"host": [
+						"payment-detik",
+						"test"
+					],
+					"port": "8081",
+					"path": [
+						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0029nhbaw23kn1j2njn31121.21knjnn2bbb1111",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "merchant_id",
+						"value": "shopee-002",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"references_id\":\"TR-20240328-001\",\r\n    \"merchant_id\" : \"shope-002\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://payment-detik.test:8081/payment/check",
+					"protocol": "http",
+					"host": [
+						"payment-detik",
+						"test"
+					],
+					"port": "8081",
+					"path": [
+						"payment",
+						"check"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
